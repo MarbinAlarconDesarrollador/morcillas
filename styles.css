@@ -131,7 +131,6 @@ body {
 /* HERO SECTION */
 .hero {
     height: 80vh;
-    /* Ajusta la altura a tu gusto */
     position: relative;
     overflow: hidden;
 }
@@ -150,10 +149,7 @@ body {
     text-align: center;
     color: white;
     border-radius: 20px;
-
-    /* AJUSTE CLAVE PARA 3D */
     width: 80%;
-    /* Esto permite ver los slides de los lados */
     height: 70vh;
 }
 
@@ -420,14 +416,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.4s ease;
 }
-/*
-.video-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    background: #000;
-}
-*/
+
 .video-card:hover {
     transform: translateY(-10px);
 }
@@ -468,18 +457,8 @@ body {
     width: 20px;
     height: 20px;
     object-fit: contain;
-    /* Evita que se inviertan si el modo oscuro está activo */
     filter: brightness(1); 
 }
-/*
-.video-controls {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}*/
 
 .video-controls {
     display: flex;
@@ -527,23 +506,6 @@ body {
     visibility: hidden;
     transition: opacity 0.5s ease;
 }
-
-/*
-.control-btn {
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid white;
-    color: white;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-}*/
 
 .control-btn {
     position: absolute;
@@ -681,7 +643,6 @@ body {
     gap: 4rem;
     align-items: center;
     flex-wrap: wrap;
-    /* Para que sea responsivo */
 }
 
 .info-text {
@@ -777,7 +738,6 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 30px;
-    /* Bordes extra redondeados */
     overflow: hidden;
     border: 5px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -856,14 +816,12 @@ body {
 
 .acordeon-item {
     flex: 1;
-    /* Todos empiezan iguales */
     background-size: cover;
     background-position: center;
     border-radius: 20px;
     position: relative;
     cursor: pointer;
     transition: all 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
-    /* Animación fluida */
     overflow: hidden;
     filter: brightness(0.7);
 }
@@ -871,7 +829,6 @@ body {
 /* El item que crece */
 .acordeon-item.active {
     flex: 5;
-    /* Este ocupa mucho más espacio */
     filter: brightness(1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -918,13 +875,9 @@ body {
 .typing-text {
     display: inline-block;
     overflow: hidden;
-    /* Esconde el texto mientras "escribe" */
     white-space: nowrap;
-    /* Mantiene el texto en una sola línea */
     border-right: 3px solid var(--secondary);
-    /* El cursor */
     width: 0;
-    /* Empieza en 0 */
 }
 
 /* Cuando el padre está activo, ejecutamos la animación */
@@ -933,7 +886,6 @@ body {
         typing 1.5s steps(40, end) forwards,
         blink-caret 0.75s step-end infinite;
     animation-delay: 0.6s;
-    /* Espera a que la carta se expanda un poco */
 }
 
 /* Animación de escribir */
