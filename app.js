@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 // 2. VARIABLES GLOBALES
 let carrito = [];
 let total = 0;
-const numeroWhatsApp = "5733205578471"; 
+const numeroWhatsApp = "5733205578471";
 
 // 3. ELEMENTOS DEL DOM
 const botonesAgregar = document.querySelectorAll('.btn-add');
@@ -40,7 +40,7 @@ botonesAgregar.forEach(boton => {
 
         // Animación de rebote en el carrito
         btnCarrito.classList.remove('cart-bounce');
-        void btnCarrito.offsetWidth; 
+        void btnCarrito.offsetWidth;
         btnCarrito.classList.add('cart-bounce');
 
         const textoOriginal = boton.textContent;
@@ -153,8 +153,8 @@ function verificarEstadoLocal() {
     const esHoraAbierta = (hora >= 8 && hora < 22);
     const badgeContainer = document.getElementById('badge-estado');
     if (badgeContainer) {
-        badgeContainer.innerHTML = (esDiaAbierto && esHoraAbierta) 
-            ? '<span class="badge-abierto">🟢 ABIERTO AHORA</span>' 
+        badgeContainer.innerHTML = (esDiaAbierto && esHoraAbierta)
+            ? '<span class="badge-abierto">🟢 ABIERTO AHORA</span>'
             : '<span class="badge-cerrado">🔴 CERRADO</span>';
     }
 }
@@ -170,7 +170,7 @@ menuToggle.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     verificarEstadoLocal();
     revealElements();
-    
+
     new Swiper(".mySwiper", {
         effect: "coverflow", grabCursor: true, centeredSlides: true,
         slidesPerView: "auto", loop: true, autoplay: { delay: 2500 },
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.play().catch(() => {});
+            if (entry.isIntersecting) entry.target.play().catch(() => { });
             else entry.target.pause();
         });
     }, { threshold: 0.6 });
@@ -192,6 +192,43 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
-        if(splash) splash.classList.add('splash-hidden');
+        if (splash) splash.classList.add('splash-hidden');
     }, 1500);
 });
+
+// Función para Play / Pause con Iconos
+function togglePlay(videoId, btn) {
+    const video = document.getElementById(videoId);
+    const card = video.closest('.video-card');
+    const icon = btn.querySelector('img'); // Buscamos la imagen dentro del botón
+
+    if (video.paused) {
+        video.play();
+        if (icon) icon.src = "assets/pause-button.png"; // Asegúrate de tener este icono o usa uno similar
+        card.classList.add('playing');
+    } else {
+        video.pause();
+        if (icon) icon.src = "assets/play-button.png";
+        card.classList.remove('playing');
+    }
+}
+
+// Función para Silencio / Sonido con Iconos
+function toggleMute(videoId, btn) {
+    const video = document.getElementById(videoId);
+    const icon = btn.querySelector('img');
+
+    video.muted = !video.muted;
+
+    if (icon) {
+        // no-sound.png para silenciado, speaker.png para sonido
+        icon.src = video.muted ? "assets/no-sound.png" : "assets/speaker.png";
+    }
+}
+
+// Función para Silencio / Sonido
+function toggleMute(videoId, btn) {
+    const video = document.getElementById(videoId);
+    video.muted = !video.muted;
+    btn.innerText = video.muted ? "🔇" : "🔊";
+}

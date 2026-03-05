@@ -414,13 +414,20 @@ body {
 
 .video-card {
     position: relative;
-    height: 500px; /* Altura tipo Reel de Instagram */
+    height: 500px; 
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.4s ease;
 }
-
+/*
+.video-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #000;
+}
+*/
 .video-card:hover {
     transform: translateY(-10px);
 }
@@ -457,6 +464,14 @@ body {
     color: var(--secondary);
 }
 
+.icon-img-video {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    /* Evita que se inviertan si el modo oscuro está activo */
+    filter: brightness(1); 
+}
+/*
 .video-controls {
     position: absolute;
     top: 15px;
@@ -464,6 +479,12 @@ body {
     display: flex;
     gap: 10px;
     z-index: 10;
+}*/
+
+.video-controls {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
 }
 
 /* Estilo del Skeleton */
@@ -507,6 +528,7 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/*
 .control-btn {
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid white;
@@ -521,11 +543,36 @@ body {
     font-size: 1.2rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
+}*/
+
+.control-btn {
+    position: absolute;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5); /* Fondo traslúcido */
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
 .control-btn:hover {
     background: var(--primary);
     transform: scale(1.1);
+}
+
+.play-pause {
+    top: 15px;
+    left: 15px;
+}
+
+.mute-unmute {
+    top: 15px;
+    right: 15px;
 }
 
 /* Ocultar el overlay cuando el video se esté reproduciendo (opcional) */

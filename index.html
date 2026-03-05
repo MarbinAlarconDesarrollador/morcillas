@@ -112,7 +112,8 @@
             </div>
         </section>
 
-        <h2 class="slide-up" style="text-align: center; padding: 2rem 0; color: var(--primary);">Nuestras Especialidades 🔥</h2>
+        <h2 class="slide-up" style="text-align: center; padding: 2rem 0; color: var(--primary);">Nuestras Especialidades
+            🔥</h2>
         <section id="especialidades" class="seccion-acordeon">
             <div class="acordeon-container">
                 <div class="acordeon-item active" style="background-image: url('assets/morcilla-traditional.webp');">
@@ -164,17 +165,18 @@
         </section>
 
 
-        <h2 class="slide-up" style="text-align: center; padding: 2rem 0; color: var(--primary);">🔥 Nuestras
-            Experiencias 📸</h2>
+        <h2 class="slide-up" style="text-align: center; padding: 2rem 0; color: var(--primary);">🔥 Nuestras Experiencias 📸</h2>
         <section id="experiencia" class="experiencia-container">
             <div class="video-card">
                 <video loop playsinline class="video-promo" id="video1">
                     <source src="assets/video1.mp4" type="video/mp4">
                 </video>
-                <div class="video-controls">
-                    <button class="control-btn play-pause" onclick="togglePlay('video1', this)">▶️</button>
-                    <button class="control-btn mute-unmute" onclick="toggleMute('video1', this)">🔇</button>
-                </div>
+                <button class="control-btn play-pause" onclick="togglePlay('video1', this)">
+                    <img src="assets/play-button.png" class="icon-img-video" alt="Play">
+                </button>
+                <button class="control-btn mute-unmute" onclick="toggleMute('video1', this)">
+                    <img src="assets/no-sound.png" class="icon-img-video" alt="Mute">
+                </button>
                 <div class="video-overlay">
                     <h3>Procesos</h3>
                     <p>Calidad Artesanal</p>
@@ -185,15 +187,19 @@
                 <video loop playsinline class="video-promo" id="video2">
                     <source src="assets/video2.mp4" type="video/mp4">
                 </video>
-                <div class="video-controls">
-                    <button class="control-btn play-pause" onclick="togglePlay('video2', this)">▶️</button>
-                    <button class="control-btn mute-unmute" onclick="toggleMute('video2', this)">🔇</button>
-                </div>
+                <button class="control-btn play-pause" onclick="togglePlay('video1', this)">
+                    <img src="assets/play-button.png" class="icon-img-video" alt="Play">
+                </button>
+                <button class="control-btn mute-unmute" onclick="toggleMute('video1', this)">
+                    <img src="assets/no-sound.png" class="icon-img-video" alt="Mute">
+                </button>
                 <div class="video-overlay">
                     <h3>En la Parrilla</h3>
                     <p>Sabor que enamora</p>
                 </div>
             </div>
+
+            
         </section>
     </main>
 
