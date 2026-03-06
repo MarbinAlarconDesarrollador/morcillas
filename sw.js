@@ -1,6 +1,6 @@
-const CACHE_NAME = 'delicias-cache-v3'; // Incrementamos la versión
-const STATIC_CACHE = 'static-v3';
-const DYNAMIC_CACHE = 'dynamic-v3';
+const CACHE_NAME = 'delicias-cache-v4'; // Incrementamos la versión
+const STATIC_CACHE = 'static-v4';
+const DYNAMIC_CACHE = 'dynamic-v4';
 
 const urlsToCache = [
     './',

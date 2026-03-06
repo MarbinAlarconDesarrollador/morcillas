@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 // 2. VARIABLES GLOBALES
 let carrito = [];
 let total = 0;
-const numeroWhatsApp = "5733205578471";
+const numeroWhatsApp = "573205578471";
 
 // 3. ELEMENTOS DEL DOM
 const botonesAgregar = document.querySelectorAll('.btn-add');
