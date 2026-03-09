@@ -1,6 +1,5 @@
-const CACHE_NAME = 'delicias-cache-v6'; // Incrementamos la versión
-const STATIC_CACHE = 'static-v6';
-const DYNAMIC_CACHE = 'dynamic-v6';
+const STATIC_CACHE = 'static-v7'; // Incrementamos versión
+const DYNAMIC_CACHE = 'dynamic-v7';
 
 const urlsToCache = [
     './',
@@ -13,16 +12,16 @@ const urlsToCache = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
-// 1. Instalación: Cacheamos el "esqueleto" de la App
+// 1. Instalación
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(STATIC_CACHE)
             .then(cache => cache.addAll(urlsToCache))
-            .then(() => self.skipWaiting()) // Fuerza la activación inmediata
+            .then(() => self.skipWaiting())
     );
 });
 
-// 2. Activación: Limpiamos cachés antiguas
+// 2. Activación
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(keys => {
@@ -34,30 +33,37 @@ self.addEventListener('activate', event => {
     );
 });
 
-// 3. Fetch: Estrategia "Cache First" con fallback a Red
+// 3. Fetch (Estrategia corregida)
 self.addEventListener('fetch', event => {
-    // Ignorar peticiones de Google Maps (ya que no se pueden cachear fácilmente)
-    if (event.request.url.includes('googleusercontent') || event.request.url.includes('google.com/maps')) {
-        return;
+    // A. EXCLUSIONES: No intentar cachear videos, mapas o peticiones parciales
+    if (
+        event.request.url.includes('google') || 
+        event.request.url.includes('maps') || 
+        event.request.headers.has('range') || // <--- ESTO EVITA EL ERROR 206
+        event.request.url.includes('.mp4')    // <--- EVITA CACHEAR VIDEOS PESADOS
+    ) {
+        return; // Deja que el navegador lo maneje por internet normal
     }
 
     event.respondWith(
         caches.match(event.request).then(response => {
-            // Si está en caché, lo devolvemos inmediatamente
             if (response) return response;
 
-            // Si no está, lo buscamos en internet y lo guardamos en la caché dinámica
             return fetch(event.request).then(networkResponse => {
+                // Solo guardamos en caché dinámica si la respuesta es válida (Status 200)
+                if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+                    return networkResponse;
+                }
+
                 return caches.open(DYNAMIC_CACHE).then(cache => {
-                    // Solo cacheamos si la petición es exitosa
                     if (event.request.method === 'GET') {
-                        cache.put(event.request.url, networkResponse.clone());
+                        cache.put(event.request, networkResponse.clone());
                     }
                     return networkResponse;
                 });
             }).catch(() => {
-                // Si falla internet y no hay caché, podrías mostrar una página de error offline
-                if (event.request.headers.get('accept').includes('text/html')) {
+                // Fallback offline para navegación HTML
+                if (event.request.mode === 'navigate') {
                     return caches.match('./index.html');
                 }
             });
