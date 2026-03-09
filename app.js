@@ -171,13 +171,29 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarEstadoLocal();
     revealElements();
 
-    new Swiper(".mySwiper", {
-        effect: "coverflow", grabCursor: true, centeredSlides: true,
-        slidesPerView: "auto", loop: true, autoplay: { delay: 2500 },
-        coverflowEffect: { rotate: 30, depth: 200, slideShadows: true },
-        pagination: { el: ".swiper-pagination", clickable: true },
+    // NUEVA CONFIGURACIÓN SWIPER: Estilo Pro
+   const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        speed: 1200,             // Transición un poco más lenta para elegancia
+        parallax: true,          // ¡ACTIVAMOS PARALLAX!
+        effect: "fade",
+        fadeEffect: { crossFade: true },
+        autoplay: {
+            delay: 6000,         // 6 segundos para dar tiempo a apreciar el efecto
+            disableOnInteraction: false,
+        },
+        pagination: { 
+            el: ".swiper-pagination", 
+            clickable: true,
+            dynamicBullets: true 
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 
+    // Control de videos (lo mantenemos igual, es buena práctica)
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.play().catch(() => { });
@@ -188,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (localStorage.getItem('dark-mode') === 'true') document.body.classList.add('dark-mode-active');
 });
-
 window.addEventListener('load', () => {
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');

@@ -13,17 +13,17 @@
 </head>
 
 <body>
-   <div id="splash-screen">
+    <div id="splash-screen">
         <div class="splash-content">
             <div class="splash-logo">
                 <img src="img/pwa-icon-512.png" alt="Logo Rellenas San Rafael" class="logo-splash-img">
             </div>
-            
+
             <div class="loading-bar">
                 <div class="progress"></div>
             </div>
             <div class="loading-text">Preparando todo el sabor...</div>
-            
+
         </div>
     </div>
 
@@ -50,38 +50,44 @@
     </header>
 
     <main>
-        <section class="hero fade-in">
+        <section class="hero-section">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner1.png');">
+                    <div class="swiper-slide">
+                        <div class="slide-bg"
+                            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('assets/banner1.png');"
+                            data-swiper-parallax="-20%">
+                        </div>
                         <div class="hero-content">
-                            <h1>El Auténtico Sabor en tu Mesa</h1>
-                            <p>Morcillas artesanales con la receta de la abuela.</p>
+                            <span class="hero-subtitle">Receta Tradicional</span>
+                            <h1 class="hero-title">El Auténtico Sabor <br><span>en tu Mesa</span></h1>
+                            <p class="hero-text">Morcillas artesanales hechas con amor y la receta de la abuela.</p>
+                            <div class="hero-actions">
+                                <a href="#menu" class="btn-hero-primary">Pedir Ahora 🛒</a>
+                                <a href="#especialidades" class="btn-hero-secondary">Ver Especialidades</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="swiper-slide"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner2.png');">
+
+                    <div class="swiper-slide">
+                        <div class="slide-bg"
+                            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('assets/banner2.png');"
+                            data-swiper-parallax="-20%">
+                        </div>
                         <div class="hero-content">
-                            <h1>El Auténtico Sabor en tu Mesa</h1>
-                            <p>Morcillas artesanales con la receta de la abuela.</p>
+                            <span class="hero-subtitle">Calidad Premium</span>
+                            <h1 class="hero-title">Chorizos de <br><span>Puro Cerdo</span></h1>
+                            <p class="hero-text">Selección especial de carnes para tus asados familiares más exigentes.
+                            </p>
+                            <div class="hero-actions">
+                                <a href="#menu" class="btn-hero-primary">Ir al Menú</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="swiper-slide"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner3.png');">
-                        <div class="hero-content">
-                            <h1>Chorizos de Puro Cerdo</h1>
-                            <p>Calidad premium para tus asados familiares.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner1.png');">
-                        <div class="hero-content">
-                            <h1>¿Te gusta el picante?</h1>
-                            <p>Prueba nuestro chorizo picante especial.</p>
-                        </div>
-                    </div>
+
                 </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>

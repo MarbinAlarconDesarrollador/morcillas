@@ -129,46 +129,132 @@ body {
 }
 
 /* HERO SECTION */
-.hero {
-    height: 80vh;
+/* Contenedor Principal */
+.hero-section {
+    height: 85vh;
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.swiper {
+.mySwiper {
     width: 100%;
     height: 100%;
 }
 
-.swiper-slide {
+/* Efecto Zoom en la imagen de fondo */
+.slide-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
+    transition: transform 8s ease; /* Zoom lento */
+    z-index: 1;
+}
+
+.swiper-slide-active .slide-bg {
+    transform: scale(1.1);
+}
+
+/* Contenido del Hero */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     color: white;
-    border-radius: 20px;
-    width: 80%;
-    height: 70vh;
+    padding: 0 10%;
 }
 
-.hero-content {
-    max-width: 800px;
-    padding: 20px;
+.hero-subtitle {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-/* Personalizar los puntos del carrusel */
-.swiper-pagination-bullet {
-    background: white;
-    opacity: 0.7;
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-.swiper-pagination-bullet-active {
-    background: var(--secondary);
-    opacity: 1;
+.hero-title span {
+    color: var(--primary); /* Resalta palabras clave */
+    -webkit-text-stroke: 1px white; /* Opcional: contorno */
 }
 
+.hero-text {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Botones Personalizados */
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.btn-hero-primary {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.3);
+    transition: 0.3s;
+}
+
+.btn-hero-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid white;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-hero-primary:hover { transform: translateY(-3px); background: var(--secondary); }
+.btn-hero-secondary:hover { background: white; color: black; }
+
+/* Animaciones cuando el Slide está activo */
+.swiper-slide-active .hero-subtitle { animation: fadeUp 0.8s 0.2s forwards; }
+.swiper-slide-active .hero-title { animation: fadeUp 0.8s 0.4s forwards; }
+.swiper-slide-active .hero-text { animation: fadeUp 0.8s 0.6s forwards; }
+.swiper-slide-active .hero-actions { animation: fadeUp 0.8s 0.8s forwards; }
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos de Swiper */
+.swiper-pagination-bullet-active { background: var(--primary) !important; }
+.swiper-button-next, .swiper-button-prev { color: white !important; scale: 0.7; }
+
+@media (max-width: 768px) {
+    .hero-actions { flex-direction: column; width: 100%; }
+    .hero-title { font-size: 2.2rem; }
+}
 /* MENÚ Y TARJETAS */
 .menu {
     padding: 3rem 2rem;
@@ -1414,4 +1500,76 @@ body.dark-mode-active .icon-img {
 @keyframes parpadeoTexto {
     0% { opacity: 0.4; transform: scale(0.98); }
     100% { opacity: 1; transform: scale(1); }
+}
+
+
+/* Efecto de Zoom Lento en el slide activo */
+.swiper-slide-active .slide-bg {
+    animation: kenBurns 6s ease-out forwards;
+}
+
+@keyframes kenBurns {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+}
+
+/* Estilo para las flechas de navegación para que se vean pro */
+.swiper-button-next, .swiper-button-prev {
+    color: white !important;
+    background: rgba(0,0,0,0.2);
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+/* Asegura que el contenido del slide esté preparado para el parallax */
+.swiper-slide {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+}
+
+/* Efecto Ken Burns Mejorado (Zoom suave al fondo) */
+.swiper-slide-active .slide-bg {
+    animation: kenBurns 10s linear forwards;
+}
+
+@keyframes kenBurns {
+    0% { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.15) translate(2%, 2%); }
+}
+
+/* Mejora de los botones en el banner */
+.hero-actions {
+    margin-top: 2rem;
+}
+
+.btn-hero-primary {
+    background: var(--primary);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.btn-hero-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
 }
