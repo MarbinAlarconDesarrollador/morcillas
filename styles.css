@@ -1290,3 +1290,128 @@ body.dark-mode-active .foto {
 body.dark-mode-active .icon-img {
     filter: invert(1) hue-rotate(180deg);
 }
+
+/* --- LOGO EN EL ENCABEZADO (NAVBAR) --- */
+.logo {
+    display: flex;
+    align-items: center; /* Centra verticalmente la imagen con el texto */
+    gap: 12px; /* Espacio perfecto entre el logo y las letras */
+    cursor: pointer;
+}
+
+.logo-nav-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%; /* Asegura que el contorno sea un círculo perfecto */
+    background-color: white; /* Fondo blanco para que resalte sobre el rojo */
+    padding: 2px; /* Borde interno sutil */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse (o tocar) el logo del menú */
+.logo:hover .logo-nav-img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Hace que el texto resalte más */
+}
+
+
+/* --- LOGO EN EL SPLASH SCREEN --- */
+.logo-splash-img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: white;
+    padding: 4px;
+    /* Sombra más pronunciada para darle profundidad de App */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    /* Agregamos una animación infinita */
+    animation: latidoApp 2s infinite ease-in-out;
+    margin-bottom: 20px;
+}
+
+/* Animación de "latido" suave mientras carga la App */
+@keyframes latidoApp {
+    0% { 
+        transform: scale(1); 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    }
+    50% { 
+        transform: scale(1.05); /* Crece un 5% */
+        box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); /* La sombra brilla un poco */
+    }
+    100% { 
+        transform: scale(1); 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    }
+}
+
+/* Opcional: Ajuste para pantallas móviles muy pequeñas */
+@media (max-width: 400px) {
+    .logo-text {
+        font-size: 1.1rem; /* Achica un poco el texto si la pantalla es estrecha */
+    }
+    .logo-nav-img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* --- BARRA DE CARGA PREMIUM --- */
+.loading-bar {
+    width: 220px; /* Un poco más ancha */
+    height: 12px; /* Un poco más gruesa */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente elegante */
+    border-radius: 20px; /* Bordes totalmente redondeados tipo píldora */
+    margin: 20px auto 10px auto;
+    overflow: hidden;
+    position: relative;
+    /* Sombra interna para dar efecto de profundidad 3D */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    /* Un degradado que va de blanco a un naranja/amarillo suave */
+    background: linear-gradient(90deg, #ffffff, #ffcc80); 
+    border-radius: 20px;
+    /* Sombra exterior para que parezca que la barra brilla o tiene luz de neón */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    /* La animación de carga */
+    animation: cargarApp 1.5s ease-in-out forwards;
+}
+
+/* Animación fluida de llenado */
+@keyframes cargarApp {
+    0% { width: 0%; }
+    40% { width: 50%; }
+    80% { width: 90%; }
+    100% { width: 100%; }
+}
+
+/* --- TEXTO DE CARGANDO --- */
+.loading-text {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    /* Efecto de parpadeo suave tipo "respiración" */
+    animation: parpadeoTexto 1.5s infinite alternate ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+@keyframes parpadeoTexto {
+    0% { opacity: 0.4; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1); }
+}
